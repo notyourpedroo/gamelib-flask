@@ -1,7 +1,7 @@
 from flask import render_template, request, redirect, session, flash, url_for, send_from_directory
 from gamelib import app, db
 from models import Games
-from helpers import recover_image, delete_file, GameForm, UserForm
+from helpers import recover_image, delete_file, GameForm
 import time
 
 @app.route('/')
