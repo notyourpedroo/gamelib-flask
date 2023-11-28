@@ -1,0 +1,34 @@
+{% extends "template.html" %}
+{% block content %}
+  <form class="game-form" method="post" action="{{ url_for('update') }}" enctype="multipart/form-data">
+    <figure class="img-thumbnail col-md-4 form-image">
+      <img class="img-fluid" src="{{ url_for('image', file_name=game_cover) }}">
+      <figcaption>
+        <label class="fileContainer">
+          Change cover
+          <input type="file" name="file" accept=".jpg">
+        </label>
+      </figcaption>
+    </figure>
+    <fieldset>
+      <input type="hidden" name="id" value="{{ id }}">
+      {{ form.csrf_token() }}
+      <div class="form-group input-box">
+        {{ form.name.label(class="form-label") }}
+        {{ form.name(class="form-control") }}
+      </div>
+      <div class="form-group input-box">
+        {{ form.category.label(class="form-label") }}
+        {{ form.category(class="form-control") }}
+      </div>
+      <div class="form-group input-box">
+        {{ form.platform.label(class="form-label") }}
+        {{ form.platform(class="form-control") }}
+      </div>
+      <div class="form-group buttons">
+        {{ form.save(class="btn btn-primary") }}
+        <a class="btn btn-danger" href="{{ url_for('index') }}">Cancel</a>
+      </div>
+    </fieldset>
+  </form>
+{% endblock %}
